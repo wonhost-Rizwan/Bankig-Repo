@@ -6,6 +6,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-white">
       {/* Title */}
 
+      <h1 className="text-4xl font-bold mb-5">Please Select your Bank</h1>
       {/* Cards */}
       <div className="grid gap-6 w-full max-w-md bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:shadow-2xl  transition transform ">
         <Link
